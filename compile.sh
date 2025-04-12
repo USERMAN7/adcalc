@@ -1,2 +1,5 @@
-g++ sources/calc.cpp -o output/calc
+#!/usr/bin/bash
+
+g++ $PWD/sources/calc.cpp -o $PWD/output/calc
+
 
