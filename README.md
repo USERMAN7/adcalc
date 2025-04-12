@@ -10,5 +10,15 @@
 ```sh
 git clone https://github.com/USERMAN7/adcalc.git
 cd adcalc
-./start.sh
+./setup.sh
+```
+
+***
+
+### Установка для **Termux**
+
+``sh
+git clone https://github.com/USERMAN7/adcalc.git
+cd adcalc
+./termux-setup.sh
 ```
