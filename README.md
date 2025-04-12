@@ -17,7 +17,7 @@ cd adcalc
 
 ### Установка для **Termux**
 
-``sh
+```sh
 git clone https://github.com/USERMAN7/adcalc.git
 cd adcalc
 ./termux-setup.sh
