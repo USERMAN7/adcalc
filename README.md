@@ -8,6 +8,9 @@
 ### Установка для **Debian** базированных дистрибутивов linux
 
 `git clone https://github.com/USERMAN7/adcalc.git
+
 cd adcalc
+
 chmod +x
+
 ./start.sh` 
