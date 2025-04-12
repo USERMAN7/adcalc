@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
-g++ $PWD/sources/calc.cpp -o $PWD/output/calc
+DIR=$(cat .dir)
+g++ $DIR/sources/calc.cpp -o $DIR/output/calc
 
 
