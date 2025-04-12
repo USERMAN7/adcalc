@@ -3,4 +3,11 @@
 
 Поддерживает только диструбутивы linux базированые на debian и *Termux*, экспериментально можно использовать в **UNIX** системах.
 
-~~WIndows~~ не в планах поддержки! 
+~~WIndows~~ не в планах поддержки!
+
+### Установка
+
+`git clone https://github.com/USERMAN7/adcalc.git`
+`cd adcalc`
+`chmod +x`
+ 
