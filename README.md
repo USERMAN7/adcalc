@@ -1,1 +1,1 @@
-# adcalc
+# adcalc advanced calculator with c++
