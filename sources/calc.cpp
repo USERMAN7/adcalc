@@ -19,50 +19,54 @@ int main() {
 		cout << endl << "Отлично вот обычный калькулятор\n";
 		cout << "Введите первое число!:";
 		cin >> a;
-		cout << endl << "Введите второе число!:";
+		cout << "\n" << "Введите второе число!:";
 		cin >> b;
-		cout << endl << "Какую операцию совершить с данными числами?\n";
+		cout << "\n" << "Какую операцию совершить с данными числами?\n";
 		cout << "1: +" << " 2: -" << " 3: /" << " 4: *\n";
 		calc = 0;
 		float ab;
 		cin >> calc;
+		// normal calc
 		switch(calc) {
 			case 1: ab = a + b; break;
 			case 2: ab = a - b; break;
 			case 3: ab = a / b; break;
 			case 4: ab = a * b; break;	
 			}
-		cout << "Вывод операции:" << ab << endl;
+		cout << "Вывод операции:" << ab << "\n"; 
 		calc = 0;
 	}
 	else if(calcoption == 2) {
-	      	cout << "Привет это калькулятор с поддержкой физ. формул" << endl;
-	        cout << "Выберите нужную формулу" << endl;
+	      	cout << "Привет это калькулятор с поддержкой физ. формул" << "\n"; 
+		// advanced calculator menu
+	        cout << "Выберите нужную формулу" << "\n";
        		cout << "1:Кинетическая энергия Ek=mv2/2\n";
  		cout << "2:Км/час в метр/с\n";
 		cout << "3:Потенциальная энергия En=mgh\n";
 		cin >> calc;
 		switch(calc) {
-			case 1:	
+			case 1:
+			// kinetic energy calculator	
        	       		cout << "Введи первое число массу M:";
 			cin >> x;
- 			cout << endl << "Второе число скорость метры в секунду";
+ 			cout << "\n" << "Второе число скорость метры в секунду";
 			cin >> y;
 			xy = 0.5 * x * y;
 			cout << "Ответ:" << xy << " Дж";
 		       	break;
-			case 2:
+			case 2: // km/h to m/s
 			cout << "Введите скорость километров в час просто как 10 для примера:";
 			cin >> x;
 			y = x / 3.6;
 			cout << "Это будет " << y << " метров в секунду"; break;
 			case 3:
+			// potential energy calculator
 			cout << "Введите массу объекта в кг:";
 			cin >> x;
 			cout << endl << "Введите растояни над землей в метрах:";
 			cin >> y;
 			float by = x * g * y;
-			cout << endl << "Потенциальная энергия равна:" << by << " Дж" << endl; break;
+			cout << "\n" << "Потенциальная энергия равна:" << by << " Дж" << "\n"; break;
 		}
 	}
 
