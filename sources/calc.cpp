@@ -3,7 +3,7 @@ using namespace std;
 int main() {
 	cout << "Привет это инжернерный калькулятор(без синусов и кос)\n";
 	float a,b;
-	float xy,by;
+	float xy,by,ab;
 	float x,y,g;
 	g = 10;
 	cout << "Хотите сначала попробовать обычную версию?\n";
@@ -24,7 +24,6 @@ int main() {
 		cout << "\n" << "Какую операцию совершить с данными числами?\n";
 		cout << "1: +" << " 2: -" << " 3: /" << " 4: *\n";
 		calc = 0;
-		float ab;
 		cin >> calc;
 		// normal calc
 		switch(calc) {
@@ -44,6 +43,7 @@ int main() {
  		cout << "2:Км/час в метр/с\n";
 		cout << "3:Потенциальная энергия En=mgh\n";
 		cout << "4:Момент силы M = f * d\n";
+		cout << "5:Центр массы тел в неравномерном расстояние пример в книге\n";
 		cin >> calc;
 		switch(calc) {
 			case 1:
@@ -75,7 +75,19 @@ int main() {
 			cout << "\nВведите радиус-вектор (метры):";
 			cin >> y;
 			xy = x * y;
-			cout << "\nВывод:" << xy << "\n";
+			cout << "\nВывод:" << xy << "\n"; break;
+			case 5:
+			cout << "\nВведите массу1:";
+			cin >> a;
+			cout << "\nВведите расстояние1:";
+			cin >> b;
+			cout << "\nВведите массу2:";
+			cin >> x;
+			xy = a * b;
+			by = x + a;
+			ab = xy / by;
+			cout << "\nЦентр массы находится в " << ab << "метрах\n";
+
 		}
 	}
 
