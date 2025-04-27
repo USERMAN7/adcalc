@@ -8,4 +8,5 @@ mkdir output
 ./compile.sh
 echo $PWD > .dir
 echo 'Use compiled version in output directory!'
-
+echo 'Для быстрого запуска запустите ./run.sh это вспомогательный файл'
+chmod +x run.sh
