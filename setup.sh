@@ -7,4 +7,8 @@ echo $PWD > .dir
 mkdir output
 ./compile.sh
 echo 'Use compiled version in output directory!'
+echo ' '
+echo ' '
+echo 'You can also run it with ./run.sh shell file!'
+chmod +x run.sh
 
