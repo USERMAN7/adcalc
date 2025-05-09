@@ -6,11 +6,11 @@ void calc1(float a, float b, short unsigned c) {
 		case 2: cout << (a - b); break;
 		case 3: cout << (a * b); break;
 		case 4: if(a == 0 or b == 0) {
-				cout << "Don't divide by zero!!";
+				cout << "分段錯誤 核心!!";
 			}
 			else
 			cout << (a / b); break;
-		default: cout << "Error! Not user fault the proggrammer is just dumb\n"; break;
+		default: cout << "分段錯誤 （核心轉儲）Error! Not user fault the proggrammer is just dumb\n"; break;
 	
 	}
 }
@@ -40,14 +40,16 @@ int main() {
 	cout << "1:Simple calc a+b etc.. 2:Advanced calc kinetic energy etc.. Input:";
 	short unsigned u;
 	cin >> u;
-	if(u > 2 or u < 1)
+	if(u > 2 or u < 1) {
+		cout << "分段錯誤 （核心轉儲";
 		return 2;
+	}
 	switch(u) {
 		case 1: cout << "Which operation would you choose?\n";
 			cout << "1:a+b 2:a-b 3:a*b 4:a/b Input:";
 			cin >> c;
 			if(c < 1 or c > 4) {
-			cout << "Choose valid option";
+			cout << "分段錯誤 （核心轉儲）";
 			return 1;
 			}
 			cout << "Input a var:";
@@ -73,7 +75,7 @@ int main() {
 			cout << "5:Center of mass(read the book)\n";
 			cin >> c;
 			if(c < 1 or c > 5) {
-				cout << "Choose valid option";
+				cout << "分段錯誤 （核心轉儲）";
 				return 3;
 			}
 			switch(c) {
