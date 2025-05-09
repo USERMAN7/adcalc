@@ -5,7 +5,11 @@ void calc1(float a, float b, short unsigned c) {
 		case 1: cout << (a + b); break;
 		case 2: cout << (a - b); break;
 		case 3: cout << (a * b); break;
-		case 4: cout << (a / b); break;
+		case 4: if(a == 0 or b == 0) {
+				cout << "Don't divide by zero!!";
+			}
+			else
+			cout << (a / b); break;
 		default: cout << "Error! Not user fault the proggrammer is just dumb\n"; break;
 	
 	}
@@ -42,7 +46,7 @@ int main() {
 		case 1: cout << "Which operation would you choose?\n";
 			cout << "1:a+b 2:a-b 3:a*b 4:a/b Input:";
 			cin >> c;
-			if(c < 0 or c > 4) {
+			if(c < 1 or c > 4) {
 			cout << "Choose valid option";
 			return 1;
 			}
