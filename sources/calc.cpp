@@ -98,7 +98,7 @@ int main() {
 					cin >> b;
 					cout << "\nOutput:";
 					calc2(a,b,0,1);
-					cout << "\n";
+					cout << "\n"; break;
 				case 5: cout << "Input mass of a second obj(kg):";
 					cin >> a;
 					cout << "\nInput a length:";
