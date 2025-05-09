@@ -11,7 +11,7 @@ void calc1(float a, float b, short unsigned c) {
 			else
 			cout << (a / b); break;
 		default: cout << "分段錯誤 （核心轉儲）Error! Not user fault the proggrammer is just dumb\n"; break;
-	
+
 	}
 }
 void calc2(float x, float y, float z, short unsigned v) {
@@ -32,7 +32,7 @@ void calc2(float x, float y, float z, short unsigned v) {
 	}
 }
 int main() {
-	float a = 0; 
+	float a = 0;
 	float b = 0;
 	short unsigned c;
 	cout << "Hello, welcome to the adcalc++\n";
@@ -54,7 +54,7 @@ int main() {
 			}
 			cout << "Input a var:";
 			cin >> a;
-			if(c == 1) 
+			if(c == 1)
 				cout << a << " + b";
 			else if(c == 2)
 				cout << a << " - b";
@@ -114,12 +114,12 @@ int main() {
 					cout << "\nPoint of mass is in the ";
 					calc2(a,b,u,c);
 					cout << " m\n"; break;
-						
+
 			}
 
 
 		}
-	
-	
+
+
 	return 0;
 }
