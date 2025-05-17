@@ -30,8 +30,7 @@ void calc2(float x, float y, float z, short unsigned v) {
 int main() {
 	float a = 0; 
 	float b = 0;
-	short unsigned c;
-	int u;
+	short unsigned c,u;
 	cout << "Добро пожаловать в adcalc++!\n";
 	cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
 	cout << "1:Обычный калькулятор 2:Продвинутый калькулятор \nвыбор:";
@@ -104,7 +103,7 @@ int main() {
 					cout << "\n";
 				case 5: cout << "Введите массу объекта 2(кг):";
 					cin >> a;
-					cout << "\nВведите длинну:";
+					cout << "\nВведите длинну(м):";
 					cin >> b;
 					cout << "\nВведите массу объекта 1(кг):";
 					cin >> u;
