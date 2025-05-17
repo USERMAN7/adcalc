@@ -47,7 +47,7 @@ int main() {
 			cout << "вводите операция из списка(ошибка #1)";
 			return 1;
 			}
-			cout << "Input a var:";
+			cout << "Введите переменную a:";
 			cin >> a;
 			if(c == 1) 
 				cout << a << " + b";
@@ -57,9 +57,9 @@ int main() {
 				cout << a << " * b";
 			else if(c == 4)
 				cout << a << " / b" ;
-			cout << "\nInput b var:";
+			cout << "\nВведите переменную b:";
 			cin >> b;
-			cout << "You answer:";
+			cout << "Вывод:";
 			calc1(a,b,c);
 			cout << "\n"; break;
 		case 2: cout << "Choose formulas\n";
