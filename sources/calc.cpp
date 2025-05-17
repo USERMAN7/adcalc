@@ -31,19 +31,20 @@ int main() {
 	float a = 0; 
 	float b = 0;
 	short unsigned c;
-	cout << "Hello, welcome to the adcalc++\n";
-	cout << "Use simple or adcanced calc?\n";
-	cout << "1:Simple calc a+b etc.. 2:Advanced calc kinetic energy etc.. Input:";
+	cout << "Добро пожаловать в adcalc++!\n";
+	cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
+	cout << "1:Обычный калькулятор 2:Продвинутый калькулятор \nвыбор:";
 	short unsigned u;
 	cin >> u;
 	if(u > 2 or u < 1)
+		cout << "Пожалуйста выберите из списка!(ошибка #2)\n"; 
 		return 2;
 	switch(u) {
-		case 1: cout << "Which operation would you choose?\n";
-			cout << "1:a+b 2:a-b 3:a*b 4:a/b Input:";
+		case 1: cout << "Какую операцию хотите использовать\n";
+			cout << "1:a+b 2:a-b 3:a*b 4:a/b Выбор:";
 			cin >> c;
 			if(c < 0 or c > 4) {
-			cout << "Choose valid option";
+			cout << "вводите операция из списка(ошибка #1)";
 			return 1;
 			}
 			cout << "Input a var:";
