@@ -31,14 +31,15 @@ int main() {
 	float a = 0; 
 	float b = 0;
 	short unsigned c;
+	int u;
 	cout << "Добро пожаловать в adcalc++!\n";
 	cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
 	cout << "1:Обычный калькулятор 2:Продвинутый калькулятор \nвыбор:";
-	short unsigned u;
 	cin >> u;
-	if(u > 2 or u < 1)
+	if(u > 2 or u < 1) {
 		cout << "Пожалуйста выберите из списка!(ошибка #2)\n"; 
 		return 2;
+	}
 	switch(u) {
 		case 1: cout << "Какую операцию хотите использовать\n";
 			cout << "1:a+b 2:a-b 3:a*b 4:a/b Выбор:";
@@ -62,59 +63,59 @@ int main() {
 			cout << "Вывод:";
 			calc1(a,b,c);
 			cout << "\n"; break;
-		case 2: cout << "Choose formulas\n";
-			cout << "1:Kinetic energy Ek=mv2/2\n";
-			cout << "2:Kilometers per hour to m/s\n";
-			cout << "3:Potencitial energy En=mgh\n";
-			cout << "4:Moment of Force M=F*d\n";
-			cout << "5:Center of mass(read the book)\n";
+		case 2: cout << "Выберите формулу \n";
+			cout << "1:Кинетическая энергия Ek=mv2/2\n";
+			cout << "2:Км/час в метр/сек\n";
+			cout << "3:Потенциальная энергия En=mgh\n";
+			cout << "4:Момент силы M=F*d\n";
+			cout << "5:Центр массы с двумя точками\n";
 			cin >> c;
 			if(c < 1 or c > 5) {
 				cout << "Choose valid option";
 				return 3;
 			}
 			switch(c) {
-				default:cout << "Not ready yet! :(\n";
+				default:cout << "Нет такого(ошибка #4)\n";
 					return 4;
-				case 1: cout << "Input mass(kg):";
+				case 1: cout << "Введи массу(kg):";
 					cin >> a;
-					cout << "\nInput metres in second:";
+					cout << "\nВведите скорость (м/с):";
 					cin >> b;
-					cout << "\nAnswer:";
+					cout << "\nВывод:";
 					calc2(a,b,0,c);
-					cout << " J\n"; break;
-				case 2: cout << "Input km/h:";
+					cout << "Дж\n"; break;
+				case 2: cout << "Введите км/час:";
 					cin >> a;
-					cout << a << " km/h is ";
+					cout << a << " км/час это ";
 					calc2(a,b,0,c);
-					cout << " m/s\n"; break;
-				case 3: cout << "Input object mass(kg):";
+					cout << " метров в секунду\n"; break;
+				case 3: cout << "Введите массу объекта(кг):";
 					cin >> a;
-					cout << "\nInput height of obj(m):";
+					cout << "\nВведите высоту над землей(м):";
 					cin >> b;
-					calc2(a,b,0,c); break;
-				case 4: cout << "Input force in Newthon(H):";
+					calc2(a,b,0,c);
+					cout << "Дж\n"; break;
+				case 4: cout << "Введите силу(H):";
 					cin >> a;
-					cout << "\nInput radius-vector(m):";
+					cout << "\nВведите радиус вектор(м):";
 					cin >> b;
-					cout << "\nOutput:";
+					cout << "\nВывод:";
 					calc2(a,b,0,1);
 					cout << "\n";
-				case 5: cout << "Input mass of a second obj(kg):";
+				case 5: cout << "Введите массу объекта 2(кг):";
 					cin >> a;
-					cout << "\nInput a length:";
+					cout << "\nВведите длинну:";
 					cin >> b;
-					cout << "\nInput mass 1:";
+					cout << "\nВведите массу объекта 1(кг):";
 					cin >> u;
-					cout << "\nPoint of mass is in the ";
+					cout << "\nЦентр массы находится в ";
 					calc2(a,b,u,c);
-					cout << " m\n"; break;
+					cout << " метрах\n"; break;
 						
 			}
 
 
 		}
-	
 	
 	return 0;
 }
