@@ -59,6 +59,12 @@ int main() {
 				std::cout << a << " / b" ;
 			std::cout << "\nВведите переменную b:";
 			std::cin >> b;
+			if(c == 4) {
+				if(a == 0 or b == 0) {
+				std::cout << "Не возможно делить на 0, ошибка #5\n";
+				return 5;
+			}
+			}
 			std::cout << "Вывод:";
 			calc1(a,b,c);
 			std::cout << "\n"; break;
