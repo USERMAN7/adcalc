@@ -106,7 +106,7 @@ int main() {
 					std::cin >> b;
 					std::cout << "\nВывод:";
 					calc2(a,b,0,1);
-					std::cout << "\n";
+					std::cout << "\n"; break;
 				case 5: std::cout << "Введите массу объекта 2(кг):";
 					std::cin >> a;
 					std::cout << "\nВведите длинну(м):";
