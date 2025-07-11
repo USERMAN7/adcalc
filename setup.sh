@@ -3,6 +3,8 @@ config=/home/$(whoami)/.config/adcalc # Makes config directory for project. to c
 if [ -d $config ]; then
 	rm -rf $(cat $config/dir)/output
 	rm -rf $config && echo Removed previous config file.
+else
+	new=1
 fi
 echo 'Hi this is setuping proggram...'
 echo 'Please input your distro ID, supported distro debian,arch,rhel'
@@ -37,9 +39,13 @@ fi
 #Nothing serious					       ||
 #==============================================================+
 mkdir -p "$config" || { echo "Failed to make $config."; exit 1; } 
-echo $PWD > "$config"/dir
-mkdir $(cat $config/dir)/output || { echo "Failed to make $(cat $config/dir)/output"; exit 1; }
-$(cat "$config"/dir)/compile.sh || { echo "file not found exiting."; exit 1 }
+echo "$PWD" > "$config"/dir
+mkdir "$(cat "$config"/dir)/output" || { echo "Failed to make $(cat "$config"/dir)/output"; exit 1; }
+
+"$(cat "$config"/dir)/compile.sh" || { echo "file not found exiting."; exit 1; }
+
 echo 'Use compiled version in output directory!'
 echo 'You can also run it with ./run.sh shell file!'
-chmod +x $(cat "config"/dir)/run.sh || { echo "Failed to make $(cat $config/dir)/run.sh"; exit 1; }
+
+chmod +x "$(cat "$config"/dir)/run.sh" || { echo "Failed to make $(cat "$config"/dir)/run.sh"; exit 1; }
+
