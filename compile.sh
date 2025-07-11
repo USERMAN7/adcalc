@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-DIR=$(cat .dir)
-g++ $DIR/sources/calc.cpp -o $DIR/output/calc
-
+CONFIG_PWD=$(cat /home/$(whoami)/.config/adcalc/dir) # Смотрит в файл конфига и переводит путь к файлу проекта, сделано для того чтобы не зависить от симболических команд
+g++ "$CONFIG_PWD"/sources/calc.cpp -o "$CONFIG_PWD"/output/calc
+echo done compiling
 
