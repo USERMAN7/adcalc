@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#config=/home/$(whoami)/.config/adcalc # Makes config directory for project. to compile
+config=/home/$(whoami)/.config/adcalc # Makes config directory for project. to compile
 if [ -d $config ]; then
 	rm -rf $(cat $config/dir)/output
 	rm -rf $config && echo Removed previous config file.
