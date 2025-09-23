@@ -2,9 +2,9 @@
 float calc1(float a, float b, char c) {
 	switch(c) {
 		case '1': return a+b; break;
-		case '2': return a - b; break;
-		case '3': return a * b; break;
-		case '4': return a / b; break;
+		case '2': return a-b; break;
+		case '3': return a*b; break;
+		case '4': return a/b; break;
 		default: return 0.0f;
 	}
 }
@@ -18,7 +18,7 @@ float calc2(float x,float y,float z,char v) {
 		  by=z+x;
 		  ab=xy/by;
 		  return ab; break;
-	default: return 0.0; 
+	default: return 0.0f; 
 	}
 }
 int main() {
@@ -91,15 +91,9 @@ int main() {
 					    std::cout << "Введите массу объекта 1(кг):";
 					    std::cin >> z;
 					    std::cout << "Центр массы находится в " << calc2(a,b,z,c) << "(м)\n"; break;
-
-					  
 			  }
-
-
-
+		default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
+			 return 1; 
 	}
 	return 0;
-					    
-					  
-						
 }
