@@ -41,6 +41,11 @@ struct Fraction {
 	float num;
 	float den;
 };
+struct Discriminant {
+	float d;
+	float x;
+	float x2;
+};
 Fraction frac(float a, float b, float x, float y, char z) {
 	Fraction result;
 	switch(z) {
@@ -78,6 +83,26 @@ float fsu(float a, float b, char z) {
        }
        return 0;
 }
+Discriminant d(float b,float a,float c) {
+	Discriminant result;
+	result.d = calc1(b,2,'5') - 4 * a * c;
+	if(result.d > 0) {
+		std::cout << -b << "+" << calc1(result.d,0,'6') << "/" << 2 << "*" << a << "=";
+		result.x = (-b + calc1(result.d, 0, '6')) / (2 * a);
+		result.x2 = (-b - calc1(result.d, 0, '6')) / (2 * a);
+	}
+	else if(result.d == 0) {
+		std::cout << "x = " << -b << "/" << 2 << "*" << a << "=";
+		result.x = (-b) / (2 * a);
+		result.x2 = 0;
+	}
+	else if(result.d < 0) {
+		std::cout << "Нет решения.";
+		result.x=0;
+	        result.x2=0;	
+	}
+	return result;
+}
 void decorator(char c,char sym) {
 	float a,b;
 	std::cout << "Введите переменную a:";
@@ -96,6 +121,7 @@ int main() {
 	std::cin >> u;
 	float a,b,z = 0;
 	switch(u) {
+		default: std::cout << "Выберите!\n"; return 1;
 		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
@@ -114,7 +140,7 @@ int main() {
 				       	   std::cout << "Результат:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
-		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\nВыбор:"; 
+		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\nВыбор:"; 
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -164,10 +190,16 @@ int main() {
 					    std::cout << "1:Квадрат суммы,2:Квадрат разности,3:Разность квадратов:";
 					    std::cin >> c;
 					    std::cout << "Результат:" << fsu(a,b,c) << "\n"; break; 
+				  case '8': { std::cout << "Введите b a c:";
+					    std::cin >> b;
+					    std::cin >> a;
+					    float cf = 0;
+					    std::cin >> cf;
+					    Discriminant result = d(b,a,cf);
+					    std::cout <<  "Дискриминант:" << result.d << "\nX1:" << result.x  << "\nX2:" << result.x2 << "\n";
 			  }
 			  break;
-		default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
-			 return 1; 
 	}
 	return 0;
+}
 }
