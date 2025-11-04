@@ -4,5 +4,5 @@ if [ -d /home ]; then
 else
 	CONFIG_PWD="$(cat ~/.config/adcalc/dir)"
 fi
-g++ "$CONFIG_PWD"/sources/calc.cpp -o "$CONFIG_PWD"/output/calc
-echo done compiling
+g++ "$CONFIG_PWD"/sources/calc.cpp -o "$CONFIG_PWD"/output/calc || { echo "Failed to compile :("; exit 1; }
+echo Done compiling
