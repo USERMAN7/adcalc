@@ -1,10 +1,25 @@
 #include <iostream>
 float calc1(float a, float b, char c) {
 	switch(c) {
-		case '1': return a+b; break;
-		case '2': return a-b; break;
-		case '3': return a*b; break;
-		case '4': return a/b; break;
+		case '1': return a+b; 
+		case '2': return a-b; 
+		case '3': return a*b; 
+		case '4': return a/b; 
+		case '5':{ double newroot = 1;
+			  for(int i = 0; i < b; i++) {
+				  newroot *= a;
+			  }
+			  return newroot; }
+		case '6': if(a < 0) {
+				  return -1;
+			  }
+			  else if(a == 0)
+				  return 0;
+			  b = a;
+			  for(int i = 0; i < 50; i++) {
+				  b = 0.5 * (b + a / b);
+			  }
+			  return b;
 		default: return 0.0f;
 	}
 }
@@ -29,7 +44,7 @@ int main() {
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
 	std::cin >> u;
 	switch(u) {
-		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b\nВыбор:";
+		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -58,9 +73,14 @@ int main() {
 					    std::cout << "Введите переменную b:";
 					    std::cin >> b;
 					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
+				  case '5': std::cout << "Введите переменную a:";
+					    std::cin >> a;
+					    std::cout << "Введите переменную b:";
+					    std::cin >> b;
+					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
-		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\nВыбор:";
+		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\nВыбор:"; 
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -92,6 +112,7 @@ int main() {
 					    std::cin >> z;
 					    std::cout << "Центр массы находится в " << calc2(a,b,z,c) << "(м)\n"; break;
 			  }
+			  break;
 		default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
 			 return 1; 
 	}
