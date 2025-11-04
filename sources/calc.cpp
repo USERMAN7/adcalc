@@ -35,6 +35,48 @@ float calc2(float x,float y,float z,char v) {
 		  return ab; break;
 	default: return 0.0f; 
 	}
+	
+}
+struct Fraction {
+	float num;
+	float den;
+};
+Fraction frac(float a, float b, float x, float y, char z) {
+	Fraction result;
+	switch(z) {
+		case '-': result.num = a * y - x * b;
+			  result.den = b * y; break;
+		case '+': result.num = a * y + x * b;
+			  result.den = b * y; break;
+		case '*': result.num = a * x;
+			  result.den = b * y; break;
+		case '/': result.num = a * y;
+			  result.den = b * x; break;
+		default: std::cout << "Нету в списке."; return result;
+	}
+	return result;
+}
+float fsu(float a, float b, char z) {
+       switch(z) {
+	       case '1': {
+				 float ab2 = 2 * a * b; // Считаем сначала 2*a*b потому что потом они станут квадратами
+				 b = calc1(b,2,'5');
+				 a = calc1(a,2,'5');
+				 std::cout << a << "+" << ab2 << "+" << b << "=";
+				 return a + ab2 + b;
+			 }
+	       case '2': { float ab2 = 2 * a * b;
+			   a = calc1(a,2,'5');
+			   b = calc1(b,2,'5');
+			   std::cout << a << "-" << ab2 << "+" << b << "=";
+			   return a - ab2 + b; }
+	       case '3': { float amb = a-b; //  Имя от а минус б
+				 float apb = a+b;
+				 std::cout << amb << "*" << apb << "=";
+				 return amb*apb; }
+	       default: std::cout << "Нету такой функции\n"; return 1;
+       }
+       return 0;
 }
 void decorator(char c,char sym) {
 	float a,b;
@@ -69,19 +111,19 @@ int main() {
 					    if(calc1(a,b,c) < 0) {
 						    std::cout << "Ошибка корень меньше 0.\n"; return -1;
 					    }
-				       	   std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
+				       	   std::cout << "Результат:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
-		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\nВыбор:"; 
+		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\nВыбор:"; 
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
 					   return 1; break;
 				  case '1': std::cout << "Введите массу(kg):";
-					  //  std::cin >> a;
+					    std::cin >> a;
 					    std::cout << "Введите скорость (м/с):";
-					    //std::cin >> b;
-					    //std::cout << "Вывод:" << calc2(a,b,z,c) << "Дж\n"; break;
+					    std::cin >> b;
+					    std::cout << "Вывод:" << calc2(a,b,z,c) << "Дж\n"; break;
 				  case '2': std::cout << "Введите км/час:";
 					    std::cin >> a;
 					    std::cout << a << "(км/час) это ";
@@ -103,6 +145,25 @@ int main() {
 					    std::cout << "Введите массу объекта 1(кг):";
 					    std::cin >> z;
 					    std::cout << "Центр массы находится в " << calc2(a,b,z,c) << "(м)\n"; break;
+				  case '6': { float x,y;
+						    char v;
+					    std::cout << "Дробь номер один сначала числитель потом знаменатель:";
+					    std::cin >> a;
+					    std::cin >> b;
+					    std::cout << "Выберите действие\"+,-,*,/\":";
+					    std::cin >> v;
+					    std::cout << "Дробь номер два сначала числитель потом знаменатель:";
+					    std::cin >> x;
+					    std::cin >> y;
+					    Fraction result = frac(a,b,x,y,v);
+					    std::cout << "Результат:" << result.num << "/" << result.den; 
+					    std::cout << "=" << result.num / result.den << "\n"; break; }
+				  case '7': std::cout << "Введите переменную a и b:";
+					    std::cin >> a;
+					    std::cin >> b;
+					    std::cout << "1:Квадрат суммы,2:Квадрат разности,3:Разность квадратов:";
+					    std::cin >> c;
+					    std::cout << "Результат:" << fsu(a,b,c) << "\n"; break; 
 			  }
 			  break;
 		default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
