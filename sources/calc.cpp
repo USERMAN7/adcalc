@@ -80,6 +80,9 @@ int main() {
 					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
 				  case '6': std::cout << "Введите переменную a:";
 					    std::cin >> a;
+					    if(calc1(a,b,c) < 0) {
+						    std::cout << "Ошибка корень меньше 0.\n"; return -1;
+					    }
 					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
