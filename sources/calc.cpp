@@ -7,27 +7,27 @@ float calc1(float a, float b, char c) {
 		case '4': return a/b; 
 		case '5':{ double newroot = 1;
 			  for(int i = 0; i < b; i++) {
-				  newroot *= a;
+				  newroot *= a; // 1 умножился на число 1 раз когда i = 0 поэтому не считается за цикл и все ок
 			  }
-			  return newroot; }
+			  return newroot; } // Когда уже достигло до этого места гарантировано что была умножена степень
 		case '6': if(a < 0) {
-				  return -1;
+				  return -1; // Код ошибки
 			  }
 			  else if(a == 0)
-				  return 0;
+				  return 0; // Корень нуля это ноль
 			  b = a;
 			  for(int i = 0; i < 50; i++) {
-				  b = 0.5 * (b + a / b);
+				  b = 0.5 * (b + a / b); // Формула Ньютона для поиска квадратного корня
 			  }
 			  return b;
-		default: return 0.0f;
+		default: return 0.0f; // чтобы компилятор не ругал за то что функция может ничего не выдать
 	}
 }
 float calc2(float x,float y,float z,char v) {
 	switch(v) {
 	case '1': return x*y; break;
 	case '2': return x/3.6; break;
-	case '3': return x*10*y; break;
+	case '3': return x*10*y; break; // Ускорение воздуха константа
 	case '5': float xy,by,ab;
 		  xy=x*y;
 		  by=z+x;
@@ -37,14 +37,14 @@ float calc2(float x,float y,float z,char v) {
 	}
 	
 }
-struct Fraction {
+struct Fraction { //  Структуры нужны чтобы выводить больше переменных как одно
 	float num;
 	float den;
 };
-struct Discriminant {
-	float d;
-	float x;
-	float x2;
+struct Discriminant { // Очень удобно
+	float d; // Дискриминант 
+	float x; // икс1
+	float x2; // икс2
 };
 Fraction frac(float a, float b, float x, float y, char z) {
 	Fraction result;
@@ -61,7 +61,7 @@ Fraction frac(float a, float b, float x, float y, char z) {
 	}
 	return result;
 }
-float fsu(float a, float b, char z) {
+float fsu(float a, float b, char z) { // фсу
        switch(z) {
 	       case '1': {
 				 float ab2 = 2 * a * b; // Считаем сначала 2*a*b потому что потом они станут квадратами
@@ -87,9 +87,11 @@ Discriminant d(float b,float a,float c) {
 	Discriminant result;
 	result.d = calc1(b,2,'5') - 4 * a * c;
 	if(result.d > 0) {
-		std::cout << -b << "+" << calc1(result.d,0,'6') << "/" << 2 << "*" << a << "=";
+		std::cout <<"D=" <<  -b << "+" << calc1(result.d,0,'6') << "/" << 2 << "*" << a << "=" << result.d;
 		result.x = (-b + calc1(result.d, 0, '6')) / (2 * a);
+		std::cout << "\nx=" << -b << '+' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x;
 		result.x2 = (-b - calc1(result.d, 0, '6')) / (2 * a);
+		std::cout << "\nx2=" << -b << '-' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x2;
 	}
 	else if(result.d == 0) {
 		std::cout << "x = " << -b << "/" << 2 << "*" << a << "=";
@@ -103,7 +105,7 @@ Discriminant d(float b,float a,float c) {
 	}
 	return result;
 }
-void decorator(char c,char sym) {
+void decorator(char c,char sym) { // Для сохранения места
 	float a,b;
 	std::cout << "Введите переменную a:";
 	std::cin >> a;
@@ -129,7 +131,7 @@ int main() {
 					   return 2;
 				  case '1': decorator(c,'+'); break;
 				  case '2': decorator(c,'-'); break;
-				  case '3': decorator(c,'*'); break;
+				  case '3': decorator(c,'*'); break; // Преисполнился в функциях ;)
 				  case '4': decorator(c,'/'); break;
 				  case '5': decorator(c,'^'); break;
 				  case '6': std::cout << "Введите переменную a:";
@@ -140,11 +142,11 @@ int main() {
 				       	   std::cout << "Результат:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
-		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\nВыбор:"; 
+		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\nВыбор:"; // Один раз вызвать печать на экран быстрее 
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
-					   return 1; break;
+					   return 2; break;
 				  case '1': std::cout << "Введите массу(kg):";
 					    std::cin >> a;
 					    std::cout << "Введите скорость (м/с):";
@@ -196,7 +198,7 @@ int main() {
 					    float cf = 0;
 					    std::cin >> cf;
 					    Discriminant result = d(b,a,cf);
-					    std::cout <<  "Дискриминант:" << result.d << "\nX1:" << result.x  << "\nX2:" << result.x2 << "\n";
+					    std::cout <<  "\nДискриминант:" << result.d << "\nX1:" << result.x  << "\nX2:" << result.x2 << "\n";
 			  }
 			  break;
 	}
