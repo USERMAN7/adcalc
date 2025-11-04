@@ -44,7 +44,7 @@ int main() {
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
 	std::cin >> u;
 	switch(u) {
-		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b\nВыбор:";
+		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -77,6 +77,9 @@ int main() {
 					    std::cin >> a;
 					    std::cout << "Введите переменную b:";
 					    std::cin >> b;
+					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
+				  case '6': std::cout << "Введите переменную a:";
+					    std::cin >> a;
 					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
