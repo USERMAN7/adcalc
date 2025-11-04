@@ -36,54 +36,40 @@ float calc2(float x,float y,float z,char v) {
 	default: return 0.0f; 
 	}
 }
+void decorator(char c,char sym) {
+	float a,b;
+	std::cout << "Введите переменную a:";
+	std::cin >> a;
+	std::cout << a << sym << "b\n";
+	std::cout << "Введите переменную b:";
+	std::cin >> b;
+	std::cout << "Результат:" << calc1(a,b,c) << "\n";
+}
+
 int main() {
-	float a,b,z = 0;
 	char c,u;
 	std::cout << "Добро пожаловать в adcalc++!\n";
 	std::cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
 	std::cin >> u;
+	float a,b,z = 0;
 	switch(u) {
 		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
 					   return 2;
-				  case '1': std::cout << "Введите переменную a:";
-					    std::cin >> a;
-					    std::cout << a << "+b\n";
-					    std::cout << "Введите переменную b:";
-					    std::cin >> b; 
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
-				  case '2': std::cout << "Введите переменную a:"; 
-					    std::cin >> a;
-					    std::cout << a << "-b\n";
-					    std::cout << "Введите переменную b:";
-					    std::cin >> b;
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
-				  case '3': std::cout << "Введите переменную a:";
-					    std::cin >> a;
-					    std::cout << a << "*b\n";
-					    std::cout << "Введите переменную b:";
-					    std::cin >> b;
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
-				  case '4': std::cout << "Введите переменную a:";
-					    std::cin >> a;
-					    std::cout << a << "/b\n";
-					    std::cout << "Введите переменную b:";
-					    std::cin >> b;
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
-				  case '5': std::cout << "Введите переменную a:";
-					    std::cin >> a;
-					    std::cout << "Введите переменную b:";
-					    std::cin >> b;
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
+				  case '1': decorator(c,'+'); break;
+				  case '2': decorator(c,'-'); break;
+				  case '3': decorator(c,'*'); break;
+				  case '4': decorator(c,'/'); break;
+				  case '5': decorator(c,'^'); break;
 				  case '6': std::cout << "Введите переменную a:";
 					    std::cin >> a;
 					    if(calc1(a,b,c) < 0) {
 						    std::cout << "Ошибка корень меньше 0.\n"; return -1;
 					    }
-					    std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
+				       	   std::cout << "Вывод:" << calc1(a,b,c) << "\n"; break;
 				}
 			  break;
 		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\nВыбор:"; 
@@ -92,10 +78,10 @@ int main() {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
 					   return 1; break;
 				  case '1': std::cout << "Введите массу(kg):";
-					    std::cin >> a;
+					  //  std::cin >> a;
 					    std::cout << "Введите скорость (м/с):";
-					    std::cin >> b;
-					    std::cout << "Вывод:" << calc2(a,b,z,c) << "Дж\n"; break;
+					    //std::cin >> b;
+					    //std::cout << "Вывод:" << calc2(a,b,z,c) << "Дж\n"; break;
 				  case '2': std::cout << "Введите км/час:";
 					    std::cin >> a;
 					    std::cout << a << "(км/час) это ";
