@@ -37,6 +37,16 @@ float calc2(float x,float y,float z,char v) {
 	}
 	
 }
+float guessx(char p,float a,float b) {
+	switch(p) {
+		case '+': return b - a; 
+		case '-': return b + a;
+		case '*': return b / a;
+		case '/': return b * a;
+		default: return 0.0f;
+	} 
+}			  
+
 struct Fraction { //  Структуры нужны чтобы выводить больше переменных как одно
 	float num;
 	float den;
@@ -124,7 +134,7 @@ int main() {
 	float a,b,z = 0;
 	switch(u) {
 		default: std::cout << "Выберите!\n"; return 1;
-		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa\nВыбор:";
+		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa 7:x +,-,/,* n = n\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -140,6 +150,17 @@ int main() {
 						    std::cout << "Ошибка корень меньше 0.\n"; return -1;
 					    }
 				       	   std::cout << "Результат:" << calc1(a,b,c) << "\n"; break;
+				  case '7':{ std::cout << "Введите имя переменной она должна быть длинной в 1 символ потом действие (+,-,*,/) после цифру после знак = после ответ\n";
+					    std::cout << "Ввод:";
+					    std::cin >> c;
+					    char p;
+					    std::cin >> p;
+					    std::cin >> a;
+					    char eq;
+					    std::cin >> eq;
+					    std::cin >> b;
+					    std::cout << c << "=" << guessx(p,a,b) << "\n"; break;
+					   } 
 				}
 			  break;
 		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\nВыбор:"; // Один раз вызвать печать на экран быстрее 
