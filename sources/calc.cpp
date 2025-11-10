@@ -97,9 +97,24 @@ Discriminant d(float b,float a,float c) {
 	Discriminant result;
 	result.d = calc1(b,2,'5') - 4 * a * c;
 	if(result.d > 0) {
-		std::cout <<"D=" <<  -b << "+" << calc1(result.d,0,'6') << "/" << 2 << "*" << a << "=" << result.d;
+		if (b > 0 && a >= 0 && c >= 0) {
+			std::cout << "D:" << calc1(b,2,'5') << "-4*" << a << '*' << c << '=' << result.d;
+}
+		else if (b < 0 && a < 0 && c < 0) {
+			std::cout << "D:(" << calc1(b,2,'5') << ")-4*(" << a << ")*(" << c << ")=" << result.d;
+		}
+		else if(b < 0) {
+			std::cout << "D:(" << calc1(b,2,'5') << ")-4*" << a << '*' << c << '=' << result.d;
+		}
+		else if(a < 0) {
+			std::cout << "D:" << calc1(b,2,'5') << "-4*(" << a << ")*" << c << '=' << result.d;
+		}
+		else if(c < 0) {
+			std::cout << "D:" << calc1(b,2,'5') << "-4*" << a << "*(" << c << ")=" << result.d;
+		}
 		result.x = (-b + calc1(result.d, 0, '6')) / (2 * a);
 		std::cout << "\nx=" << -b << '+' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x;
+		std::cout << "\n" << -b << '+' << calc1(result.d,0,'6') << "\n==========\n" << 2 << '*' << a << "	=" << result.x;
 		result.x2 = (-b - calc1(result.d, 0, '6')) / (2 * a);
 		std::cout << "\nx2=" << -b << '-' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x2;
 	}
