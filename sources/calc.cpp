@@ -245,7 +245,7 @@ int main() {
 					    z = a+b;
 					    std::cout << "c^2=" << a << '+' << b << "\n";
 					    std::cout << "c^2=" << z << "\n";
-					    std::cout << "√c^2=√" << z << "\n";
+					    std::cout << "√(c^2)=√" << z << "\n";
 					    std::cout << "c=" << calc1(z,0,'6') << "\n"; break;
 	}
 	return 0;
