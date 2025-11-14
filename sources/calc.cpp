@@ -46,7 +46,17 @@ float guessx(char p,float a,float b) {
 		default: return 0.0f;
 	} 
 }			  
-
+struct cbf {
+	int mod;
+	int a;
+};
+cbf convbadfrac(int a,int b) {
+	cbf conv;
+	conv.mod = a / b;
+	conv.a = a % b;
+	return conv;
+}
+	
 struct Fraction { //  Структуры нужны чтобы выводить больше переменных как одно
 	float num;
 	float den;
@@ -147,9 +157,10 @@ int main() {
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
 	std::cin >> u;
 	float a,b,z = 0;
+	int o,n;
 	switch(u) {
 		default: std::cout << "Выберите!\n"; return 1;
-		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa 7:x +,-,/,* n = n\nВыбор:";
+		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa 7:x +,-,/,* n = n 8:Неправильная дробь\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -175,6 +186,12 @@ int main() {
 					    std::cin >> eq;
 					    std::cin >> b;
 					    std::cout << c << "=" << guessx(p,a,b) << "\n"; break;
+				  case '8': std::cout << "Введите числитель(a):";
+					    std::cin >> o;
+					    std::cout << "Введите знаменатель(b):";
+					    std::cin >> n;
+					    cbf result = convbadfrac(o,n);
+					    std::cout << o << "   " << "   ====" << result.a << "\n==== =  " << result.mod << "====\n" << n << "      ====" << n << "\n";
 					   } 
 				}
 			  break;
