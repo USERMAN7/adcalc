@@ -7,6 +7,6 @@ mkdir output
 mkdir -p ~/.config/adcalc
 echo $PWD > ~/.config/adcalc/dir
 ./compile.sh
-echo 'Use compiled version in output directory!'
+echo 'можно использовать скомпилированный файл в директории output!'
 echo 'Для быстрого запуска запустите ./run.sh это вспомогательный файл'
 chmod +x run.sh
