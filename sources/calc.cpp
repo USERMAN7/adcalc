@@ -61,24 +61,17 @@ struct Fraction { //  Структуры нужны чтобы выводить 
 	float num;
 	float den;
 };
-struct Discriminant { // Очень удобно
-	float d; // Дискриминант 
-	float x; // икс1
-	float x2; // икс2
-};
 struct mn {
 	long double m;
 	long double n;
 };
 mn MN(long double d, long double a, long double b) {
-	// TODO: 
 	mn bda;
 	bda.m = b / ( 2 * a );
 	bda.n = d / ( 4 * a );
 	bda.m = - bda.m;
 	bda.n = - bda.n;
 	return bda;
-	
 }
 
 
@@ -119,57 +112,20 @@ float fsu(float a, float b, char z) { // фсу
        }
        return 0;
 }
-Discriminant d(float b,float a,float c) {
-	Discriminant result;
-	result.d = calc1(b,2,'5') - 4 * a * c;
-	if(result.d > 0) {
-		std::cout << "D:";
-		if ( b < 0) {
-			std::cout << '(' << b << "\u00B2" << ')';
-		}
-		else {
-			std::cout << b << "\u00B2";
-		}
-		std::cout << "-4*";
-		if( a < 0) {
-			std::cout << '(' << a << ')';
-		}
-		else {
-			std::cout << a;
-		}
-		std::cout << '*';
-		if(c < 0) {
-			std::cout << '(' << c << ')';
-		}
-		else {
-			std::cout << c;
-		}
-		std::cout << '=';
-		std::cout << calc1(b,2,'5') << "-";
-		float all = -4 * a * c;
-		if(all < 0) 
-			std::cout << '(' << all << ')';
-		else
-			std::cout << all;
-		std::cout << '=' << calc1(b,2,'5') - all << "\n";
-		result.x = (-b + calc1(result.d, 0, '6')) / (2 * a);
-		
-		std::cout << "x=" << -b << '+' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x;
-		std::cout << "\n" << -b << '+' << calc1(result.d,0,'6') << "\n==========\n" << 2 << '*' << a << "	=" << result.x;
-		result.x2 = (-b - calc1(result.d, 0, '6')) / (2 * a);
-		std::cout << "\nx2=" << -b << '-' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x2;
-	}
-	else if(result.d == 0) {
-		std::cout << "x = " << -b << "/" << 2 << "*" << a << "=";
-		result.x = (-b) / (2 * a);
-		result.x2 = 0;
-	}
-	else if(result.d < 0) {
-		std::cout << "Нет решения.";
-		result.x=0;
-	        result.x2=0;	
-	}
+float d(float b,float a,float c) {
+	float result = calc1(b,2,'5') - 4 * a * c;
 	return result;
+}
+struct xx {
+	float x1;
+        float x2;
+};	
+xx x1x2(float discriminant,float b,float a) {
+	xx xs;
+	float droot = calc1(discriminant,0,'6');
+	xs.x1 = ( -b + droot ) / ( 2 * a );
+	xs.x2 = ( -b - droot ) / ( 2 * a );
+	return xs;
 }
 void decorator(char c,char sym) { // Для сохранения места
 	float a,b;
@@ -182,7 +138,8 @@ void decorator(char c,char sym) { // Для сохранения места
 }
 
 int main() {
-	char c,u;
+	short u;
+	char c;
 	std::cout << "Добро пожаловать в adcalc++!\n";
 	std::cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
@@ -191,7 +148,7 @@ int main() {
 	int o,n;
 	switch(u) {
 		default: std::cout << "Выберите!\n"; return 1;
-		case '1': std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa 7:x +,-,/,* n = n 8:Неправильная дробь\nВыбор:";
+		case 1: std::cout << "Какую операцию хотите использовать\n1:a+b 2:a-b 3:a*b 4:a/b 5:a^b 6:\u221Aa 7:x +,-,/,* n = n 8:Неправильная дробь\nВыбор:";
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -226,7 +183,7 @@ int main() {
 					   } 
 				}
 			  break;
-		case '2': std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\n9:Теорема пифагора\nВыбор:"; // Один раз вызвать печать на экран быстрее 
+		case 2: std::cout << "Выберите формулу\n1:Кинетическая энергия Ek-mv2/2\n2:Км/час в метр/сек\n3:Потенциальная энергия En=mgh\n4:Момент силы M=F*d\n5:Центр массы с двумя точками\n6:Дробь\n7:ФСУ\n8:Дискриминант\n9:Теорема пифагора\nВыбор:"; // Один раз вызвать печать на экран быстрее 
 			  std::cin >> c;
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
@@ -279,12 +236,44 @@ int main() {
 				  case '8': { std::cout << "Введите b a c:";
 					    std::cin >> b;
 					    std::cin >> a;
-					    float cf = 0;
-					    std::cin >> cf;
-					    Discriminant result = d(b,a,cf);
-					    std::cout <<  "\nДискриминант:" << result.d << "\nX1:" << result.x  << "\nX2:" << result.x2 << "\n";	
-			  }
-			  break;
+					    std::cin >> z;
+					    float result = d(b,a,z); 
+					    std::cout << "D=";
+					    if(b < 0) 
+						    std::cout << '(' << b << ')' << "²";
+					    else 
+						    std::cout << b << "²";
+					    std::cout << "-4*";
+					    if(a < 0) 
+						    std::cout << '(' << a << ')';
+					    else 
+						    std::cout << a;
+					    std::cout << '*';
+					    if(z < 0) 
+						    std::cout << '(' << z << ')';
+					    
+					    else 
+						    std::cout << z;
+					    std::cout << '=';
+					    std::cout << calc1(b,2,'5');
+					    if(4 * a * z < 0) 
+						    std::cout << '+' <<  -( 4 * a * z);
+					    else if(4 * a * z == 0)
+						    std::cout << '-' << 4 * a * z;
+					    else {
+						    std::cout << '-';
+						    std::cout << 4 * a * z;
+					    }
+					    std::cout << '=' << result << '\n';
+					    if(result < 0) {
+						    std::cout << "Нет корней\n";
+						    return 1;
+					    }
+					    xx xxs = x1x2(result,b,a);
+					    std::cout << "x1=" << xxs.x1 << "\nx2=" << xxs.x2 << '\n'; break;
+					    
+					    }
+			  
 				  case '9': std::cout << "Введите a,b:";
 					    std::cin >> a;
 					    std::cin >> b;
