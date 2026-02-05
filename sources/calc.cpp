@@ -66,6 +66,22 @@ struct Discriminant { // Очень удобно
 	float x; // икс1
 	float x2; // икс2
 };
+struct mn {
+	long double m;
+	long double n;
+};
+mn MN(long double d, long double a, long double b) {
+	// TODO: 
+	mn bda;
+	bda.m = b / ( 2 * a );
+	bda.n = d / ( 4 * a );
+	bda.m = - bda.m;
+	bda.n = - bda.n;
+	return bda;
+	
+}
+
+
 Fraction frac(float a, float b, float x, float y, char z) {
 	Fraction result;
 	switch(z) {
@@ -135,9 +151,10 @@ Discriminant d(float b,float a,float c) {
 			std::cout << '(' << all << ')';
 		else
 			std::cout << all;
-		std::cout << '=' << calc1(b,2,'5') - all; 
+		std::cout << '=' << calc1(b,2,'5') - all << "\n";
 		result.x = (-b + calc1(result.d, 0, '6')) / (2 * a);
-		std::cout << "\nx=" << -b << '+' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x;
+		
+		std::cout << "x=" << -b << '+' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x;
 		std::cout << "\n" << -b << '+' << calc1(result.d,0,'6') << "\n==========\n" << 2 << '*' << a << "	=" << result.x;
 		result.x2 = (-b - calc1(result.d, 0, '6')) / (2 * a);
 		std::cout << "\nx2=" << -b << '-' << calc1(result.d, 0, '6') << '/' << 2 << '*' << a << '=' << result.x2;
