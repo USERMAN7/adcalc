@@ -270,7 +270,16 @@ int main() {
 						    return 1;
 					    }
 					    xx xxs = x1x2(result,b,a);
-					    std::cout << "x1=" << xxs.x1 << "\nx2=" << xxs.x2 << '\n'; break;
+					    std::cout << "x1=" << xxs.x1 << "\nx2=" << xxs.x2 << '\n';
+					    mn mnyx = MN(result,a,b);
+					    std::cout << "x0/m:-b/2a = " << mnyx.m << '\n';
+					    std::cout << "y0/n:-(D/4a) = " << mnyx.n << '\n';
+					    std::cout << "Ось симетрии (" << mnyx.m << ';' << mnyx.n << ")\n"; 
+
+					   
+					   
+					    break;
+
 					    
 					    }
 			  
