@@ -1,16 +1,16 @@
 #include <iostream>
-float calc1(float a, float b, char c) {
+float calc1(float a, float b, short c) {
 	switch(c) {
-		case '1': return a+b; 
-		case '2': return a-b; 
-		case '3': return a*b; 
-		case '4': return a/b; 
-		case '5':{ double newroot = 1;
+		case 1: return a+b; 
+		case 2: return a-b; 
+		case 3: return a*b; 
+		case 4: return a/b; 
+		case 5:{ double newroot = 1;
 			  for(int i = 0; i < b; i++) {
 				  newroot *= a; // 1 умножился на число 1 раз когда i = 0 поэтому не считается за цикл и все ок
 			  }
 			  return newroot; } // Когда уже достигло до этого места гарантировано что была умножена степень
-		case '6': if(a < 0) {
+		case 6: if(a < 0) {
 				  return -1; // Код ошибки
 			  }
 			  else if(a == 0)
@@ -23,12 +23,12 @@ float calc1(float a, float b, char c) {
 		default: return 0.0f; // чтобы компилятор не ругал за то что функция может ничего не выдать
 	}
 }
-float calc2(float x,float y,float z,char v) {
+float calc2(float x,float y,float z,short v) {
 	switch(v) {
-	case '1': return x*y; break;
-	case '2': return x/3.6; break;
-	case '3': return x*10*y; break; // Ускорение воздуха константа
-	case '5': float xy,by,ab;
+	case 1: return x*y; break;
+	case 2: return x/3.6; break;
+	case 3: return x*10*y; break; // Ускорение воздуха константа
+	case 5: float xy,by,ab;
 		  xy=x*y;
 		  by=z+x;
 		  ab=xy/by;
@@ -65,12 +65,10 @@ struct mn {
 	long double m;
 	long double n;
 };
-mn MN(long double d, long double a, long double b) {
+mn mnyx(long double d, long double a, long double b) {
 	mn bda;
-	bda.m = b / ( 2 * a );
-	bda.n = d / ( 4 * a );
-	bda.m = - bda.m;
-	bda.n = - bda.n;
+	bda.m = -b / ( 2.0 * a );
+	bda.n = -d / ( 4.0 * a );
 	return bda;
 }
 
@@ -90,21 +88,21 @@ Fraction frac(float a, float b, float x, float y, char z) {
 	}
 	return result;
 }
-float fsu(float a, float b, char z) { // фсу
+float fsu(float a, float b, short z) { // фсу
        switch(z) {
-	       case '1': {
+	       case 1: {
 				 float ab2 = 2 * a * b; // Считаем сначала 2*a*b потому что потом они станут квадратами
 				 b = calc1(b,2,'5');
 				 a = calc1(a,2,'5');
 				 std::cout << a << "+" << ab2 << "+" << b << "=";
 				 return a + ab2 + b;
 			 }
-	       case '2': { float ab2 = 2 * a * b;
+	       case 2: { float ab2 = 2 * a * b;
 			   a = calc1(a,2,'5');
 			   b = calc1(b,2,'5');
 			   std::cout << a << "-" << ab2 << "+" << b << "=";
 			   return a - ab2 + b; }
-	       case '3': { float amb = a-b; //  Имя от а минус б
+	       case 3: { float amb = a-b; //  Имя от а минус б
 				 float apb = a+b;
 				 std::cout << amb << "*" << apb << "=";
 				 return amb*apb; }
@@ -113,7 +111,7 @@ float fsu(float a, float b, char z) { // фсу
        return 0;
 }
 float d(float b,float a,float c) {
-	float result = calc1(b,2,'5') - 4 * a * c;
+	float result = calc1(b,2,5) - 4 * a * c;
 	return result;
 }
 struct xx {
@@ -122,12 +120,12 @@ struct xx {
 };	
 xx x1x2(float discriminant,float b,float a) {
 	xx xs;
-	float droot = calc1(discriminant,0,'6');
+	float droot = calc1(discriminant,0,6);
 	xs.x1 = ( -b + droot ) / ( 2 * a );
 	xs.x2 = ( -b - droot ) / ( 2 * a );
 	return xs;
 }
-void decorator(char c,char sym) { // Для сохранения места
+void decorator(short c,char sym) { // Для сохранения места
 	float a,b;
 	std::cout << "Введите переменную a:";
 	std::cin >> a;
@@ -139,7 +137,7 @@ void decorator(char c,char sym) { // Для сохранения места
 
 int main() {
 	short u;
-	char c;
+	short c;
 	std::cout << "Добро пожаловать в adcalc++!\n";
 	std::cout << "Вы можете выбрать простой калькулятор и продвинутый\n";
 	std::cout << "1:Обычный калькулятор 2:Продвинутый калькулятор\nВыбор:";
@@ -153,12 +151,12 @@ int main() {
 			  switch(c) {
 				  default: std::cout << "Пожалуйста выберите из списка!(Ошибка #2)\n";
 					   return 2;
-				  case '1': decorator(c,'+'); break;
-				  case '2': decorator(c,'-'); break;
-				  case '3': decorator(c,'*'); break; // Преисполнился в функциях ;)
-				  case '4': decorator(c,'/'); break;
-				  case '5': decorator(c,'^'); break;
-				  case '6': std::cout << "Введите переменную a:";
+				  case 1: decorator(c,'+'); break;
+				  case 2: decorator(c,'-'); break;
+				  case 3: decorator(c,'*'); break; // Преисполнился в функциях ;)
+				  case 4: decorator(c,'/'); break;
+				  case 5: decorator(c,'^'); break;
+				  case 6: std::cout << "Введите переменную a:";
 					    std::cin >> a;
 					    if(calc1(a,b,c) < 0) {
 						    std::cout << "Ошибка корень меньше 0.\n"; return -1;
@@ -215,7 +213,7 @@ int main() {
 					    std::cin >> z;
 					    std::cout << "Центр массы находится в " << calc2(a,b,z,c) << "(м)\n"; break;
 				  case '6': { float x,y;
-						    char v;
+						    short v;
 					    std::cout << "Дробь номер один сначала числитель потом знаменатель:";
 					    std::cin >> a;
 					    std::cin >> b;
